@@ -1,3 +1,257 @@
-<html>
-    
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hola Mundo — Hermoso</title>
+  <meta name="description" content="Una página Hola Mundo, moderna y hermosa." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&family=Playfair+Display:wght@600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg1:#05060a; /* fondo base */
+      --card:#0b0e15cc; /* vidrio */
+      --txt:#e9edf8; /* texto */
+      --muted:#9fb0d6; /* secundario */
+      --accent1:#7c3aed; /* morado */
+      --accent2:#06b6d4; /* cian */
+      --accent3:#22c55e; /* verde */
+      --glow1: 0 0 60px #7c3aed55, 0 0 120px #06b6d455;
+      --radius: 28px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0; font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color:var(--txt); background: radial-gradient(1200px 800px at 10% 10%, #0e1324 0%, #0b0f1d 40%, #05060a 100%);
+      overflow-x:hidden;
+    }
+
+    /* Fondo animado de gradientes y blobs */
+    .bg-wrap{ position:fixed; inset:0; z-index:-1; filter:saturate(1.1); }
+    .grad{ position:absolute; inset:-25vh -25vw; background: conic-gradient(from 210deg at 60% 40%, #0e1324, #151b38, #0a102a, #0e1324); animation: spin 40s linear infinite; opacity:.45; }
+    @keyframes spin{ to{ transform:rotate(360deg);} }
+
+    .blob{ position:absolute; width:52vmax; height:52vmax; filter: blur(72px); opacity:.28; border-radius:50%; mix-blend-mode: screen; }
+    .b1{ background: radial-gradient(circle at 30% 40%, #7c3aed, transparent 60%); top:-10vmax; left:-10vmax; animation: float1 18s ease-in-out infinite; }
+    .b2{ background: radial-gradient(circle at 70% 60%, #06b6d4, transparent 60%); bottom:-12vmax; right:-14vmax; animation: float2 22s ease-in-out infinite; }
+    .b3{ background: radial-gradient(circle at 50% 50%, #22c55e, transparent 60%); top:20vh; right:30vw; animation: float3 26s ease-in-out infinite; }
+    @keyframes float1{ 0%,100%{ transform:translate3d(0,0,0) } 50%{ transform:translate3d(4vmax,2vmax,0)} }
+    @keyframes float2{ 0%,100%{ transform:translate3d(0,0,0) } 50%{ transform:translate3d(-3vmax,-2vmax,0)} }
+    @keyframes float3{ 0%,100%{ transform:translate3d(0,0,0) } 50%{ transform:translate3d(1vmax,-3vmax,0)} }
+
+    /* Malla sutil */
+    .grid{ position:absolute; inset:0; background: radial-gradient(circle at 50% 50%, #ffffff04 0 30%, transparent 60%),
+      linear-gradient(transparent 98%, #ffffff08 98%),
+      linear-gradient(90deg, transparent 98%, #ffffff08 98%);
+      background-size: 100% 100%, 20px 20px, 20px 20px; mask-image: radial-gradient(60% 60% at 50% 50%, #000 60%, transparent 100%);
+    }
+
+    /* Contenedor principal */
+    .shell{ min-height:100dvh; display:grid; place-items:center; padding: clamp(16px, 2vw, 32px); }
+
+    .card{
+      width:min(980px, 92vw);
+      background: linear-gradient(180deg, #0f1427cc, #0b0e15cc);
+      border:1px solid #1e263f; backdrop-filter: blur(16px) saturate(1.15);
+      box-shadow: 0 20px 70px #00000080, inset 0 1px 0 #ffffff1a; border-radius: var(--radius);
+      position:relative; overflow:hidden; isolation:isolate;
+    }
+
+    .card::before{ /* brillo superior */
+      content:""; position:absolute; inset: -2px -2px auto -2px; height:140px; border-radius:inherit;
+      background: linear-gradient(90deg, #7c3aed44, #06b6d444, #22c55e44);
+      filter: blur(32px); opacity:.45; z-index:-1;
+    }
+
+    .content{ padding: clamp(24px, 6vw, 64px); display:grid; gap: clamp(16px, 2.4vw, 28px); align-items:center; justify-items:center; text-align:center; }
+
+    .kicker{ font-weight:600; letter-spacing:.18em; text-transform:uppercase; font-size: clamp(.72rem, .8rem + .3vw, .95rem); color: var(--muted);
+      display:inline-flex; gap:.6rem; align-items:center; padding:.4rem .8rem; border:1px solid #273055; border-radius:999px; background:#0a0f24a0;
+    }
+
+    .title{
+      font-family: 'Playfair Display', ui-serif, Georgia, serif; font-weight:800; line-height:1.05;
+      font-size: clamp(2.6rem, 7vw, 5.6rem);
+      letter-spacing:-.02em; margin:0;
+      background: linear-gradient(90deg, #e9edf8, #b6c3ff, #d1ffe9);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+      text-shadow: 0 6px 24px #00000040;
+    }
+
+    .subtitle{ max-width: 60ch; color: var(--muted); font-weight:400; font-size: clamp(1rem, 1rem + .4vw, 1.25rem); }
+
+    .cta-row{ display:flex; gap:12px; flex-wrap:wrap; justify-content:center; }
+
+    .btn{
+      --bd: #2b355e; position:relative; border:1px solid var(--bd); border-radius: 16px; padding:.9rem 1.2rem; font-weight:600; text-decoration:none; color:var(--txt); background:#0d1330;
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; will-change: transform;
+    }
+    .btn:hover{ transform: translateY(-2px); box-shadow: 0 10px 30px #0008, 0 0 0 6px #7c3aed22; border-color:#4251a3; }
+
+    .btn.primary{ background: radial-gradient(120% 120% at 0% 0%, #7c3aed, #06b6d4 40%, #22c55e 90%);
+      border:none; box-shadow: 0 10px 40px #7c3aed55, 0 4px 18px #06b6d455; }
+    .btn.primary:hover{ box-shadow: 0 18px 60px #7c3aed66, 0 10px 30px #06b6d466; }
+
+    .chips{ display:flex; gap:10px; flex-wrap:wrap; justify-content:center; opacity:.95 }
+    .chip{ border:1px dashed #2a3355; padding:.6rem .85rem; border-radius:999px; font-size:.9rem; color:#cbd6ff; background:#0c1230a0; }
+
+    /* Iconitos decorativos */
+    .stars{ position:absolute; inset:0; pointer-events:none; }
+    .star{ position:absolute; width:2px; height:2px; background:#fff; opacity:.7; border-radius:50%; box-shadow: var(--glow1); animation: twinkle 3s ease-in-out infinite; }
+    .star:nth-child(2){ top:18%; left:12%; animation-delay:.6s }
+    .star:nth-child(3){ top:28%; right:16%; animation-delay:1.2s }
+    .star:nth-child(4){ bottom:18%; left:22%; animation-delay:1.8s }
+    .star:nth-child(5){ bottom:10%; right:28%; animation-delay:2.4s }
+    @keyframes twinkle{ 0%,100%{ transform:scale(.6); opacity:.4 } 50%{ transform:scale(1.4); opacity:1 } }
+
+    /* Footer minimal */
+    footer{ text-align:center; color:#96a4cc; font-size:.95rem; padding: 18px; opacity:.8 }
+
+    /* Parallax sutil */
+    .parallax{ transform: translateZ(0); transition: transform .15s ease-out; }
+
+    /* Modo claro opcional */
+    .toggle{ position:fixed; top:14px; right:14px; z-index:10; }
+    .switch{ appearance:none; width:56px; height:32px; border-radius:999px; border:1px solid #283158; background:linear-gradient(180deg,#0f1430,#0a0f24); position:relative; cursor:pointer; outline:none; }
+    .switch::after{ content:""; position:absolute; top:3px; left:3px; width:26px; height:26px; background:#e9edf8; border-radius:50%; transition:left .2s ease, background .3s;
+      box-shadow: 0 2px 8px #0007; }
+    .switch:checked{ background:linear-gradient(180deg,#d8defa,#cfe9ff); border-color:#b6c3ff; }
+    .switch:checked::after{ left:27px; background:#0a0f24; }
+
+    body.light{ background: radial-gradient(1200px 800px at 10% 10%, #eef3ff 0%, #e3e8ff 40%, #dde7ff 100%); color:#0b0e15; }
+    body.light .card{ background: linear-gradient(180deg, #ffffffcc, #f2f5ffcc); border-color:#cfd9ff; }
+    body.light .kicker{ background:#ffffffa0; color:#273055; border-color:#cbd6ff; }
+    body.light .subtitle{ color:#3a466e }
+    body.light .chip{ background:#ffffffcc; color:#273055; border-color:#cbd6ff }
+
+    @media (prefers-reduced-motion: reduce){
+      .grad, .blob, .star, .btn{ animation:none!important }
+    }
+  </style>
+</head>
+<body>
+  <!-- Toggle de tema -->
+  <div class="toggle" title="Cambiar tema">
+    <input id="theme" class="switch" type="checkbox" aria-label="Cambiar entre oscuro y claro" />
+  </div>
+
+  <!-- Fondos hermosos -->
+  <div class="bg-wrap" aria-hidden="true">
+    <div class="grad"></div>
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+    <div class="grid"></div>
+  </div>
+
+  <!-- Estrellas decorativas -->
+  <div class="stars" aria-hidden="true">
+    <div class="star" style="top:8%; left:6%"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+  </div>
+
+  <main class="shell">
+    <section class="card parallax" id="card">
+      <div class="content">
+        <span class="kicker">✨ Edición de Lujo · Hola Mundo</span>
+        <h1 class="title">Hola, mundo</h1>
+        <p class="subtitle">Una primera página hecha con cariño: animaciones suaves, vidrio esmerilado, gradientes vivos y detalles brillantes. 100% HTML + CSS + JS en un solo archivo.</p>
+
+        <div class="cta-row">
+          <a class="btn primary" href="#" id="celebrar">Celebrar</a>
+          <a class="btn" href="#" id="copiar">Copiar saludo</a>
+        </div>
+
+        <div class="chips" aria-hidden="true">
+          <span class="chip">#Glassmorphism</span>
+          <span class="chip">#Gradientes</span>
+          <span class="chip">#Parallax</span>
+          <span class="chip">#Twinkles</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Hecho con ♥ y CSS. Siente la magia.
+  </footer>
+
+  <script>
+    // Parallax sutil con el mouse
+    const card = document.getElementById('card');
+    let rect;
+    function updateRect(){ rect = card.getBoundingClientRect(); }
+    updateRect();
+    window.addEventListener('resize', updateRect);
+    window.addEventListener('mousemove', (e)=>{
+      const x = (e.clientX - (rect.left + rect.width/2)) / rect.width;
+      const y = (e.clientY - (rect.top + rect.height/2)) / rect.height;
+      card.style.transform = `translateZ(0) rotateX(${y * -3}deg) rotateY(${x * 4}deg)`;
+    });
+    window.addEventListener('mouseleave', ()=>{ card.style.transform = 'none' });
+
+    // Toggle de tema claro/oscuro
+    const theme = document.getElementById('theme');
+    const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+    if(prefersLight){ document.body.classList.add('light'); theme.checked = true; }
+    theme.addEventListener('change', ()=>{
+      document.body.classList.toggle('light', theme.checked);
+    });
+
+    // Confeti simple al celebrar
+    const celebrar = document.getElementById('celebrar');
+    celebrar.addEventListener('click', (e)=>{
+      e.preventDefault();
+      burst(36);
+    });
+
+    // Copiar saludo
+    document.getElementById('copiar').addEventListener('click', (e)=>{
+      e.preventDefault();
+      navigator.clipboard.writeText('Hola, mundo').then(()=>{
+        toast('¡Copiado!');
+      });
+    });
+
+    // Utilidades: confeti + toast
+    function burst(n=24){
+      const frag = document.createDocumentFragment();
+      const { innerWidth:w, innerHeight:h } = window;
+      for(let i=0;i<n;i++){
+        const p = document.createElement('div');
+        const size = Math.random()*8+6;
+        p.style.cssText = `position:fixed; left:${w/2}px; top:${h/2}px; width:${size}px; height:${size}px; border-radius:3px; background:hsl(${Math.random()*360},90%,60%); pointer-events:none; z-index:9999;`;
+        const angle = Math.random()*Math.PI*2;
+        const speed = Math.random()*10+6;
+        const vx = Math.cos(angle)*speed;
+        const vy = Math.sin(angle)*speed - (Math.random()*6+8);
+        let x=w/2, y=h/2, life=0, rot=Math.random()*360, vr=(Math.random()*6-3);
+        p.animate([{ transform:`translate(-50%,-50%) rotate(${rot}deg)` },{ transform:`translate(-50%,-50%) rotate(${rot+vr*30}deg)` }], { duration:600, easing:'ease-out' });
+        frag.appendChild(p);
+        (function step(){
+          y += vy; x += vx; vy += 0.6; life++;
+          p.style.transform = `translate(${x}px, ${y}px)`;
+          p.style.opacity = 1 - (life/90);
+          if(life<90) requestAnimationFrame(step); else p.remove();
+        })();
+      }
+      document.body.appendChild(frag);
+    }
+
+    function toast(text){
+      const t = document.createElement('div');
+      t.textContent = text; t.setAttribute('role','status');
+      t.style.cssText = `position:fixed; left:50%; bottom:24px; transform:translateX(-50%); background:#0b0f22cc; border:1px solid #2a3355; padding:.7rem 1rem; border-radius:12px; color:#e9edf8; z-index:9999; backdrop-filter: blur(8px);`;
+      document.body.appendChild(t);
+      setTimeout(()=>{ t.style.transition='all .4s ease'; t.style.opacity='0'; t.style.transform='translateX(-50%) translateY(10px)'; }, 1200);
+      setTimeout(()=> t.remove(), 1800);
+    }
+  </script>
+</body>
 </html>
