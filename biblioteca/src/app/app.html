@@ -1,0 +1,25 @@
+<main>
+  <header class="header">
+    <div class="header-container">
+      <!-- Logo -->
+      <div class="logo">
+        <img src="logo.png" />
+      </div>
+    </div>
+  </header>
+
+<aside class="p-4 h-full flex flex-col">
+  <p-panelMenu [model]="items" class="flex-1 h-full">
+  </p-panelMenu>
+</aside>
+
+  <section>
+    <router-outlet></router-outlet>
+  </section>
+
+
+  <footer>
+    <app-footer></app-footer>
+  </footer>
+
+</main>

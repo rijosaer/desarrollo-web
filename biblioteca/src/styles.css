@@ -1,0 +1,20 @@
+/* styles.css global */
+.p-panelmenu .p-menuitem .p-menuitem-link {
+    display: flex !important;
+    align-items: center !important;
+    gap: 1rem !important;
+}
+
+.p-panelmenu .p-menuitem .p-menuitem-icon {
+    font-size: 1.6rem !important;
+}
+
+.p-panelmenu .p-menuitem:hover {
+    background-color: #00cc44 !important;
+    color: white !important;
+}
+
+.p-panelmenu .p-menuitem.p-menuitem-active {
+    background-color: transparent !important;
+    color: black !important;
+}
