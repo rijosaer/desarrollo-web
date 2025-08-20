@@ -8,9 +8,49 @@
     </div>
   </header>
 
-<aside class="p-4 h-full flex flex-col">
-  <p-panelMenu [model]="items" class="flex-1 h-full">
-  </p-panelMenu>
+<aside class="menu-aside">
+  <nav class="menu">
+    <a routerLink="/book" routerLinkActive="active" class="menu-item" [routerLinkActiveOptions]="{ exact: true }">
+      <i class="pi pi-book"></i>
+      <span>Libro</span>
+    </a>
+    <a routerLink="/author" routerLinkActive="active" class="menu-item" [routerLinkActiveOptions]="{ exact: true }">
+      <i class="pi pi-user"></i>
+      <span>Autor</span>
+    </a>
+    <a routerLink="/editorial" routerLinkActive="active" class="menu-item" [routerLinkActiveOptions]="{ exact: true }">
+      <i class="pi pi-building"></i>
+      <span>Editorial</span>
+    </a>
+    <a routerLink="/copy" routerLinkActive="active" class="menu-item" [routerLinkActiveOptions]="{ exact: true }">
+      <i class="pi pi-clone"></i>
+      <span>Ejemplar</span>
+    </a>
+    <a routerLink="/category" routerLinkActive="active" class="menu-item" [routerLinkActiveOptions]="{ exact: true }">
+      <i class="pi pi-tags"></i>
+      <span>Categoría</span>
+    </a>
+    <a routerLink="/student" routerLinkActive="active" class="menu-item" [routerLinkActiveOptions]="{ exact: true }">
+      <i class="pi pi-id-card"></i>
+      <span>Estudiante</span>
+    </a>
+    <a routerLink="/loan" routerLinkActive="active" class="menu-item" [routerLinkActiveOptions]="{ exact: true }">
+      <i class="pi pi-calendar"></i>
+      <span>Préstamo</span>
+    </a>
+    <a routerLink="/loan-detail" routerLinkActive="active" class="menu-item" [routerLinkActiveOptions]="{ exact: true }">
+      <i class="pi pi-list"></i>
+      <span>Detalle Préstamo</span>
+    </a>
+    <a routerLink="/reservation" routerLinkActive="active" class="menu-item" [routerLinkActiveOptions]="{ exact: true }">
+      <i class="pi pi-clock"></i>
+      <span>Reserva</span>
+    </a>
+    <a routerLink="/history" routerLinkActive="active" class="menu-item" [routerLinkActiveOptions]="{ exact: true }">
+      <i class="pi pi-history"></i>
+      <span>Historial</span>
+    </a>
+  </nav>
 </aside>
 
   <section>
