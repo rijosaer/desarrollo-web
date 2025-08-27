@@ -1,0 +1,23 @@
+/* Fuente amigable */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+/* Contenedor del menú */
+.menutransparente.p-menu,
+.menutransparente .p-menu {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  border-radius: 0%;
+  background: none; /* Degradado verde */
+  border-width: 0px;
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  font-weight: 450; 
+  text-transform: uppercase;
+  }
+
+  .p-menu .pi {
+  color: #ffd700 !important;
+  font-size: 1.2rem;
+}
+

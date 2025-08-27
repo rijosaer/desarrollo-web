@@ -1,0 +1,23 @@
+/* Alineación interna */
+.header-container {
+  max-width: 1880px;
+  margin: 0 auto;
+  padding: 10px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.logo {
+   flex-shrink: 0;             /* el logo nunca se encoge raro */
+}
+
+
+.logo img {
+ max-height: 100%;           /* ocupa el alto disponible */
+  max-width: 230px;           /* nunca más ancho que esto */
+  height: auto;
+  width: auto;
+  object-fit: contain;        /* se adapta sin deformarse */
+
+}
