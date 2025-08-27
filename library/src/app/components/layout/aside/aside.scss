@@ -22,3 +22,22 @@
   font-size: 1.2rem;
 }
 
+/* Texto de los ítems */
+.p-menu-item-label {
+  color: rgb(255, 255, 255) !important;
+  
+}
+
+.p-menu-list {
+  gap: 1.3rem; /* Espacio entre los ítems */
+}
+
+.p-menu-item-link {
+ border-radius: 0.5rem; /* Bordes redondeados */
+}
+
+/* En proceso */
+.p-menu-item-link:hover {
+  background: rgba(0, 86, 162, 0.15);
+  transform: translateX(3px);
+}

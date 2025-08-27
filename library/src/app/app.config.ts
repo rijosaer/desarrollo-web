@@ -5,6 +5,7 @@ import { providePrimeNG } from 'primeng/config';
 import material from '@primeuix/themes/material';
 import { routes } from './app.routes';
 
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
@@ -13,7 +14,7 @@ export const appConfig: ApplicationConfig = {
     provideAnimationsAsync(),
     providePrimeNG({
             theme: {
-                preset: material,
+                preset: material
             }
         })
   ]
