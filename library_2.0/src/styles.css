@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+/* Contenedor del menú */
+.menutransparente.p-menu,
+.menutransparente .p-menu {
+  @apply flex flex-col p-2 bg-transparent border-0 font-[Poppins] text-[18px] font-medium uppercase;
+}
+
+/* Iconos */
+.menutransparente .pi {
+  @apply text-[#ffd700] text-lg;
+}
+
+/* Texto de los ítems */
+.menutransparente .p-menuitem-text {
+  @apply text-white;
+}
+
+/* Lista del menú */
+.menutransparente .p-menu-list {
+  @apply space-y-1; /* espacio entre ítems */
+}
+
+/* Links de ítems */
+.menutransparente .p-menuitem-link {
+  @apply rounded-md transition-all duration-200;
+}
+
+/* Hover en links */
+.menutransparente .p-menuitem-link:hover {
+  @apply bg-[rgba(0,86,162,0.15)] translate-x-[3px];
+}
+
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "primeicons/primeicons.css";

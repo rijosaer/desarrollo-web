@@ -1,0 +1,26 @@
+<main class="grid h-screen grid-cols-[250px_1fr_1fr_1fr_1fr] grid-rows-[auto_1fr_auto] gap-0">
+  
+  <!-- Header -->
+  <header class="col-span-5 flex items-center px-5 text-white 
+                 shadow-md border-b-[5px] border-[#ffd700] 
+                 bg-gradient-to-r from-[#004d00] to-[#009933]">
+    <app-header></app-header>
+  </header>
+
+  <!-- Aside -->
+  <aside class="flex flex-col p-2 font-[Poppins] text-[18px] font-medium uppercase 
+                 shadow-md border-r-[5px] border-[#ffd700] 
+                 bg-gradient-to-br from-[#004d00] to-[#009933]">
+    <app-aside></app-aside>
+  </aside>
+
+  <!-- Section -->
+  <section class="col-span-4 overflow-auto">
+    <router-outlet></router-outlet>
+  </section>
+
+  <!-- Footer -->
+  <footer class="col-span-5">
+    <app-footer></app-footer>
+  </footer>
+</main>
