@@ -1,1 +1,77 @@
-<p>show-loan works!</p>
+<div class="card p-3">
+  <!-- Botón para crear nuevo préstamo -->
+  <p-button 
+    label="Nuevo préstamo" 
+    icon="pi pi-plus" 
+    severity="success" 
+    [routerLink]="['/loan/create']" />
+
+  <!-- Tabla de préstamos -->
+  <p-table [value]="loans" [tableStyle]="{'min-width': '70rem'}">
+    
+    <!-- Encabezado -->
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="id" style="width:8%">
+          <div class="flex items-center gap-2">
+            ID
+            <p-sortIcon field="id" />
+          </div>
+        </th>
+
+        <th pSortableColumn="studentId" style="width:20%">
+          <div class="flex items-center gap-2">
+            Estudiante
+            <p-sortIcon field="studentId" />
+          </div>
+        </th>
+
+        <th pSortableColumn="loanDate" style="width:15%">
+          <div class="flex items-center gap-2">
+            Fecha préstamo
+            <p-sortIcon field="loanDate" />
+          </div>
+        </th>
+
+        <th pSortableColumn="dueDate" style="width:15%">
+          <div class="flex items-center gap-2">
+            Fecha vencimiento
+            <p-sortIcon field="dueDate" />
+          </div>
+        </th>
+
+        <th pSortableColumn="status" style="width:10%">
+          <div class="flex items-center gap-2">
+            Visibilidad
+            <p-sortIcon field="status" />
+          </div>
+        </th>
+
+        <th pSortableColumn="state" style="width:12%">
+          <div class="flex items-center gap-2">
+            Estado
+            <p-sortIcon field="state" />
+          </div>
+        </th>
+
+        <th style="width:20%">Acciones</th>
+      </tr>
+    </ng-template>
+
+    <!-- Cuerpo -->
+    <ng-template pTemplate="body" let-loan>
+      <tr>
+        <td>{{ loan.id }}</td>
+        <!-- Aquí idealmente mostrarías el nombre del estudiante -->
+        <td>{{ loan.studentName || loan.studentId }}</td>
+        <td>{{ loan.loanDate | date:'yyyy-MM-dd' }}</td>
+        <td>{{ loan.dueDate | date:'yyyy-MM-dd' }}</td>
+        <td>{{ loan.status }}</td>
+        <td>{{ loan.state }}</td>
+
+       
+      </tr>
+    </ng-template>
+
+  </p-table>
+</div>

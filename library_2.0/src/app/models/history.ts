@@ -1,4 +1,4 @@
-export interface History {
+export interface HistoryI {
   id?: number;
   loanId: number;        
   event: 'CREATED' | 'RENEWED' | 'RETURNED' | 'OVERDUE' | 'LOST';

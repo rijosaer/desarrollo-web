@@ -21,6 +21,12 @@
                         <p-sortIcon field="code" />
                     </div>
                 </th>
+                  <th pSortableColumn="quantity" style="width:20%">
+                    <div class="flex items-center gap-2">
+                        Quantity
+                        <p-sortIcon field="code" />
+                    </div>
+                </th>
                 <th pSortableColumn="status" style="width:20%">
                     <div class="flex items-center gap-2">
                         Status
@@ -41,6 +47,7 @@
                 <td>{{ copy.id }}</td>
                 <td>{{ copy.bookId }}</td>
                 <td>{{ copy.code }}</td>
+                <td>{{ copy.quantity }}</td>
                 <td>{{ copy.status }}</td>
                 <td>{{ copy.availability }}</td>
                 

@@ -1,1 +1,49 @@
-<p>create-reservation works!</p>
+<form [formGroup]="form" (ngSubmit)="submit()" class="p-6 bg-white rounded shadow">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    
+    <div>
+      <label>Estudiante</label>
+      <p-select [options]="students" optionLabel="fullName" optionValue="id" formControlName="studentId" placeholder="Seleccione un estudiante"></p-select>
+    </div>
+
+    <div>
+      <label>Préstamo</label>
+      <p-select [options]="loans" optionLabel="id" optionValue="id" formControlName="loanId" placeholder="Seleccione un préstamo"></p-select>
+    </div>
+
+    <div class="md:col-span-2">
+      <label>Ejemplares</label>
+      <p-multiSelect [options]="copies" optionLabel="code" optionValue="id" formControlName="copyIds" placeholder="Seleccione ejemplares"></p-multiSelect>
+    </div>
+
+    <div>
+      <label>Fecha reserva</label>
+      <input pInputText type="date" formControlName="reservedDate" class="w-full"/>
+    </div>
+
+    <div>
+      <label>Fecha expiración</label>
+      <input pInputText type="date" formControlName="expirationDate" class="w-full"/>
+    </div>
+
+    <div class="md:col-span-2">
+      <label>Notas</label>
+      <input pInputText formControlName="notes" class="w-full"/>
+    </div>
+
+    <div>
+      <label>Estado</label>
+      <p-select [options]="[
+        { label: 'Activo', value: 'active' },
+        { label: 'Completado', value: 'completed' },
+        { label: 'Cancelado', value: 'cancelled' }
+      ]" optionLabel="label" optionValue="value" formControlName="status"></p-select>
+    </div>
+    
+  </div>
+
+  <div class="flex justify-end mt-4 gap-2">
+    <button pButton type="submit" label="Guardar" [disabled]="form.invalid"></button>
+    <button pButton type="button" label="Cancelar" (click)="cancelar()"></button>
+  </div>
+</form>

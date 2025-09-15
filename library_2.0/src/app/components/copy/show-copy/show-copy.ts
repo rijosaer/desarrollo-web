@@ -4,6 +4,7 @@ import { TableModule } from 'primeng/table';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { RouterModule } from '@angular/router';
+import { Copy } from '../../../services/copy';
 
 @Component({
   selector: 'app-show-copy',
@@ -18,7 +19,15 @@ export class ShowCopy {
       bookId: 1,
       code: 'C001',
       status: 'active',
+      quantity: 5,
       availability: 'available'
     }
   ];
+
+  constructor(private copyService: Copy) {
+    this.copyService.copy$.subscribe(data => {
+      this.copy = data;
+    });
+  } 
+
 }

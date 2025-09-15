@@ -1,1 +1,67 @@
-<p>show-loan-detail works!</p>
+<div class="card p-3">
+  <!-- Botón para añadir ejemplar a préstamo -->
+  <p-button 
+    label="Añadir libro al préstamo" 
+    icon="pi pi-plus" 
+    severity="success" 
+    [routerLink]="['/loan-detail/create']" />
+
+  <!-- Tabla de detalles de préstamo -->
+  <p-table [value]="loanDetails" [tableStyle]="{'min-width': '70rem'}">
+    
+    <!-- Encabezado -->
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="id" style="width:8%">
+          <div class="flex items-center gap-2">
+            ID
+            <p-sortIcon field="id" />
+          </div>
+        </th>
+       <th>
+          <div class="flex items-center gap-2">
+            Préstamo
+            <p-sortIcon field="loanId" />
+          </div>
+       </th>
+        <th pSortableColumn="copyId" style="width:20%">
+          <div class="flex items-center gap-2">
+            Ejemplar
+            <p-sortIcon field="copyId" />
+          </div>
+        </th>
+
+        <th pSortableColumn="notes" style="width:25%">
+          <div class="flex items-center gap-2">
+            Notas
+            <p-sortIcon field="notes" />
+          </div>
+        </th>
+
+        <th pSortableColumn="status" style="width:12%">
+          <div class="flex items-center gap-2">
+            Estado
+            <p-sortIcon field="status" />
+          </div>
+        </th>
+
+        <th style="width:20%">Acciones</th>
+      </tr>
+    </ng-template>
+
+    <!-- Cuerpo -->
+    <ng-template pTemplate="body" let-detail>
+      <tr>
+        <td>{{ detail.id }}</td>
+          <td>{{ detail.loanId }}</td>
+        <!-- Mostrar el código del ejemplar si está disponible -->
+        <td>{{ detail.copyId }}</td>
+        <td>{{ detail.notes }}</td>
+        <td>{{ detail.status }}</td>
+
+       
+      </tr>
+    </ng-template>
+
+  </p-table>
+</div>
