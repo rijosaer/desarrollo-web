@@ -6,8 +6,8 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class History {
-  private histories: HistoryI[] = [];
-  private histories$ = new BehaviorSubject<HistoryI[]>(this.histories);
+  histories: HistoryI[] = [];
+ histories$ = new BehaviorSubject<HistoryI[]>(this.histories);
   
   getHistories() {
     return this.histories;
