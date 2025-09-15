@@ -1,1 +1,51 @@
-<p>show-copy works!</p>
+<div class="card p-3 ">
+    <p-button label="Nuevo Ejemplar" icon="pi pi-book" severity="info" [routerLink]="['/copy/create']" />
+    <p-table [value]="copy" [tableStyle]="{'min-width': '60rem'}">
+        <ng-template #header>
+            <tr>
+                <th pSortableColumn="id" style="width:20%">
+                    <div class="flex items-center gap-2">
+                        Id
+                        <p-sortIcon field="id" />
+                    </div>
+                </th>
+                <th pSortableColumn="bookId" style="width:20%">
+                    <div class="flex items-center gap-2">
+                        BookId
+                        <p-sortIcon field="bookId" />
+                    </div>
+                </th>
+                <th pSortableColumn="code" style="width:20%">
+                    <div class="flex items-center gap-2">
+                        Code
+                        <p-sortIcon field="code" />
+                    </div>
+                </th>
+                <th pSortableColumn="status" style="width:20%">
+                    <div class="flex items-center gap-2">
+                        Status
+                        <p-sortIcon field="status" />
+                    </div>
+                </th>
+                <th pSortableColumn="availability" style="width:20%">
+                    <div class="flex items-center gap-2">
+                        Availability
+                        <p-sortIcon field="availability" />
+                    </div> 
+                </th>
+                
+            </tr>
+        </ng-template>
+        <ng-template #body let-copy>
+            <tr>
+                <td>{{ copy.id }}</td>
+                <td>{{ copy.bookId }}</td>
+                <td>{{ copy.code }}</td>
+                <td>{{ copy.status }}</td>
+                <td>{{ copy.availability }}</td>
+                
+
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

@@ -3,7 +3,7 @@ import { TableModule } from 'primeng/table';
 import { CommonModule } from '@angular/common';
 import { AuthorI } from '../../../models/author';
 import { ButtonModule } from 'primeng/button';
-
+import { Author } from '../../../services/author';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -14,17 +14,13 @@ import { RouterModule } from '@angular/router';
   styleUrl: './show-author.css'
 })
 export class ShowAuthor  {
- author: AuthorI[] = [
-  {
-    id: 1,
-    name: "Ricardo Boyaca",
-    status: 'active',
-  },
-  {
-    id: 2,
-    name: "Johan Boyaca",
-    status: 'active',
+  
+ author: AuthorI[] = [ ];
+  constructor(private authorService: Author) {
+    this.authorService.author$.subscribe(data => {
+      this.author = data;
+    });
   }
- ];
+
  
 }
