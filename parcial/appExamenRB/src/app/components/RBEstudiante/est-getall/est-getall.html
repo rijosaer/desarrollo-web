@@ -1,0 +1,39 @@
+<div class="card p-8">
+    <div class="flex justify-end">
+        <button
+            pButton
+            type="button"
+            class="p-button p-component bg-primary text-white"
+            icon="pi pi-plus"
+            label="Nuevo Estudiante"
+            [routerLink]="['RBEstudiante/create']"
+        >
+    </button>
+    </div>
+    <p-table [value]="estudiante" stripedRows [tableStyle]="{'min-width': '50rem'}">
+        <ng-template #header>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Documento</th>
+                <th>Email</th>
+                <th>Teléfono</th>
+                <th>Grado</th>
+                <th>Estado</th>
+            </tr>
+        </ng-template>
+        <ng-template #body let-estudiante>
+            <tr>
+                <td>{{estudiante.id}}</td>
+                <td>{{estudiante.firstName}}</td>
+                <td>{{estudiante.lastName}}</td>
+                <td>{{estudiante.documentId}}</td>
+                <td>{{estudiante.email}}</td>
+                <td>{{estudiante.phone}}</td>
+                <td>{{estudiante.grade}}</td>
+                <td>{{estudiante.status}}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
